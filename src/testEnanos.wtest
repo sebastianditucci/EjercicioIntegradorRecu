@@ -1,0 +1,14 @@
+import seres.*
+import escondites.*
+
+describe "test enanos" {
+	const enanoFurioso = new EnanoFurioso()
+	const enanoMinero = new EnanoMinero()
+	method initialize() {
+		enanoMinero.adquirirExperiencia()
+		enanoMinero.sufrirSuenioProfundo()
+	}
+	test "habilidad enano furioso" { assert.equals(400, enanoFurioso.habilidad()) }
+	test "ira enano  minero" { assert.equals(485, enanoMinero.ira()) }
+	test "cantidad escondites de enano minero" { assert.equals(1, enanoMinero.escondites().size()) }
+}

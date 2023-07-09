@@ -1,0 +1,57 @@
+import territorios.*
+import seres.*
+
+const elfoSilvano = new ElfoSilvano()
+const hobbit = new Hobbit()
+const enanoHerrero = new EnanoHerrero()
+const territorio = new Territorio()
+
+describe "seres y territorios despues de la fiesta" {
+	method initialize() {
+		territorio.seres().add(elfoSilvano)
+		territorio.seres().add(hobbit)
+		territorio.seres().add(enanoHerrero)
+		hobbit.organizarFiesta()
+	}
+	test "habilidad del elfo" { assert.equals(580, elfoSilvano.habilidad()) }
+	test "habilidad del hobbit" { assert.equals(1100, hobbit.habilidad()) }
+	test "habilidad del enanoHerrero" { assert.equals(300, enanoHerrero.habilidad()) }
+	test "cantidad de amigos del hobbit" { assert.equals(45, hobbit.amigos()) }
+	test "hobbit es inmortal" { assert.that(hobbit.esInmortal()) }
+	test "promedio de habilidad del territorio" { assert.equals(660, territorio.habilidadPromedio()) }
+	test "valor maximo del ser inmortal del territorio" { assert.equals(1100, territorio.valorInmortalMasHabilidoso()) }
+	test "seres torpes del territorio" { assert.equals(#{elfoSilvano, enanoHerrero}, territorio.seresTorpes()) }
+	test "existe un ser mortal en el territorio" { assert.that(territorio.hayAlgunSerMortal()) }
+}
+
+describe "seres y territorios despues de la fiesta y el torneo" {
+	method initialize() {
+		territorio.seres().add(elfoSilvano)
+		territorio.seres().add(hobbit)
+		territorio.seres().add(enanoHerrero)
+		hobbit.organizarFiesta()
+		territorio.huboUnTorneo()
+	}
+	test "canciones del elfo" { assert.equals(40, elfoSilvano.cancionesConocidas()) }
+	test "amigos del hobbit" { assert.equals(53, hobbit.amigos()) }
+	test "ira del enano" { assert.equals(500, enanoHerrero.ira()) }
+	test "habilidad del elfo" { assert.equals(580, elfoSilvano.habilidad()) }
+	test "habilidad del hobbit" { assert.equals(1100, hobbit.habilidad()) }
+	test "habilidad del enanoHerrero" { assert.equals(400, enanoHerrero.habilidad()) }
+	test "seres torpes del territorio" { assert.equals(#{elfoSilvano, enanoHerrero}, territorio.seresTorpes()) }
+}
+
+describe "seres y territorios despues de la fiesta, en torneo y la epifanía" {
+	method initialize() {
+		territorio.seres().add(elfoSilvano)
+		territorio.seres().add(hobbit)
+		territorio.seres().add(enanoHerrero)
+		hobbit.organizarFiesta()
+		territorio.huboUnTorneo()
+		territorio.huboUnaEpifania()
+	}
+	test "canciones del elfo" { assert.equals(80, elfoSilvano.cancionesConocidas()) }
+	test "habilidad del elfo" { assert.equals(640, elfoSilvano.habilidad()) }
+	test "ira del enano" { assert.equals(800, enanoHerrero.ira()) }
+	test "amigos del hobbit" { assert.equals(53, hobbit.amigos()) }
+}

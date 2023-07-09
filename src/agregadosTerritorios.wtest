@@ -1,0 +1,18 @@
+import territorios.*
+import seres.*
+
+describe "agregados territorios" {
+	const elfoSilvano = new ElfoSilvano()
+    const hobbit = new Hobbit()
+    const enanoHerrero = new EnanoHerrero()
+    const territorio = new Territorio()
+    method initialize() {
+    	territorio.seres().add(elfoSilvano)
+		territorio.seres().add(hobbit)
+		territorio.seres().add(enanoHerrero)
+		territorio.somnolencia()
+		territorio.consumoDeRecursos()
+    }
+    test "capitan del territorio" { assert.equals(hobbit , territorio.capitan()) }
+    test "no esta en paz" { assert.notThat(territorio.estaEnPaz()) }
+}
