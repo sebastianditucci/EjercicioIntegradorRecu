@@ -2,7 +2,7 @@ import escondites.*
 
 class Elfo {
 	var cancionesConocidas = 20
-	method cancionesConocidas() = cancionesConocidas.min(0)
+	method cancionesConocidas() = cancionesConocidas.max(0)
 	method esInmortal() = true
 	method habilidad() {
 		if (cancionesConocidas <= 60) { return 180 }
